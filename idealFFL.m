@@ -12,11 +12,11 @@ rhoReference = 0.5;% [m] Fields are descrive inside a sphere of 1 meter of diame
 amplitude_zero = 10^-18;
 
 gradientOnTheLine = 4;
-driveAmplitude = 0.005;
+drivePeakAmplitude = 0.015;
 
 coefGradient = (gradientOnTheLine/2)*rhoReference;
-coefDrive_X = driveAmplitude;
-coefDrive_Y = driveAmplitude;
+coefDrive_X = drivePeakAmplitude;
+coefDrive_Y = drivePeakAmplitude;
 
 %% Quadrupole 0
 disp('Defines the quadrupole 0')
@@ -92,7 +92,7 @@ Drive_Y.bc(2).coefficient(1,1) = coefDrive_Y/Drive_Y.current;
 Drive_Y.rhoReference = 1;
 
 clear('maxOrder','maxDegree','rhoReference',...
-    'amplitude_zero','gradientOnTheLine','driveAmplitude',...
+    'amplitude_zero','gradientOnTheLine','drivePeakAmplitude',...
     'coefGradient','coefDrive_X','coefDrive_Y')
 
-save('examples\FieldsIdealFFL.mat')
+save('examples\IdealFFL.mat')

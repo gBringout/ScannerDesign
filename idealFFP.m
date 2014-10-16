@@ -10,14 +10,15 @@ rhoReference = 0.5;% [m] Fields are descrive inside a sphere of 1 meter of diame
 %sometime, we cannot use zero, for examples when we want to display in a
 %log scale
 amplitude_zero = 10^-18;
+df
 
 gradientInMainDirection = 4;
-driveAmplitude = 0.005;
+drivePeakAmplitude = 0.005;
 
 coefGradient = (gradientInMainDirection)*rhoReference;
-coefDrive_X = driveAmplitude;
-coefDrive_Y = driveAmplitude;
-coefDrive_Z = driveAmplitude;
+coefDrive_X = drivePeakAmplitude;
+coefDrive_Y = drivePeakAmplitude;
+coefDrive_Z = drivePeakAmplitude;
 
 %% Delection
 disp('Define the Selection coil')
@@ -79,7 +80,7 @@ Drive_Z.bc(3).coefficient(1,1) = coefDrive_Z/Drive_Z.current;
 Drive_Z.rhoReference = 1;
 
 clear('maxOrder','maxDegree','rhoReference',...
-    'amplitude_zero','gradientInMainDirection','driveAmplitude',...
+    'amplitude_zero','gradientInMainDirection','drivePeakAmplitude',...
     'coefGradient','coefDrive_X','coefDrive_Y','coefDrive_Z')
 
 save('examples\IdealFFP.mat')
