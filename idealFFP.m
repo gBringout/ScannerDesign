@@ -5,12 +5,11 @@ clear all
 
 maxOrder = 2; % maximal order for the spherical harmonics serie
 maxDegree = 2; % maximal order for the spherical harmonics serie
-rhoReference = 0.5;% [m] Fields are descrive inside a sphere of 1 meter of diameter
+rhoReference = 0.5;% [m] Fields are described inside a sphere of 1 meter of diameter
 
 %sometime, we cannot use zero, for examples when we want to display in a
 %log scale
 amplitude_zero = 10^-18;
-df
 
 gradientInMainDirection = 4;
 drivePeakAmplitude = 0.005;
