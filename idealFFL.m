@@ -31,7 +31,7 @@ Quadru_0.bc(1).coefficient(2,2) = coefGradient;
 Quadru_0.bs(2).coefficient(2,2) = -coefGradient;
 
 Quadru_0.current = 1;
-Quadru_0.rhoReference = 1;
+Quadru_0.rhoReference = rhoReference;
 
 %% Q45
 disp('Defines the quadrupole 45')
@@ -46,7 +46,7 @@ Quadru_45.bs(1).coefficient(2,2) = coefGradient;
 Quadru_45.bc(2).coefficient(2,2) = coefGradient;
 
 Quadru_45.current = 1;
-Quadru_45.rhoReference = 1;
+Quadru_45.rhoReference = rhoReference;
 %% Delection
 disp('Define the Selection coil')
 Selection_Z.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -61,7 +61,7 @@ Selection_Z.bs(2).coefficient(2,2) = coefGradient;
 Selection_Z.bc(3).coefficient(2,1) = 2*coefGradient;
 
 Selection_Z.current = 1;
-Selection_Z.rhoReference = 1;
+Selection_Z.rhoReference = rhoReference;
 %% Drive X
 disp('Define the Drive X')
 Drive_X.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -89,7 +89,7 @@ Drive_Y.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_Y.current = 100;
 Drive_Y.bc(2).coefficient(1,1) = coefDrive_Y/Drive_Y.current;
 
-Drive_Y.rhoReference = 1;
+Drive_Y.rhoReference = rhoReference;
 
 clear('maxOrder','maxDegree','rhoReference',...
     'amplitude_zero','gradientOnTheLine','drivePeakAmplitude',...
