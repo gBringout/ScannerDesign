@@ -34,7 +34,7 @@ Selection_Z.bs(2).coefficient(2,2) = coefGradient;
 Selection_Z.bc(3).coefficient(2,1) = 2*coefGradient;
 
 Selection_Z.current = 1;
-Selection_Z.rhoReference = 1;
+Selection_Z.rhoReference = rhoReference;
 %% Drive X
 disp('Define the Drive X')
 Drive_X.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -48,7 +48,7 @@ Drive_X.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_X.current = 23.30;
 Drive_X.bc(1).coefficient(1,1) = coefDrive_X/Drive_X.current;
 
-Drive_X.rhoReference = 1;
+Drive_X.rhoReference = rhoReference;
 %% Drive Y
 disp('Define the Drive Y')
 Drive_Y.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -62,7 +62,7 @@ Drive_Y.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_Y.current = 23.30;
 Drive_Y.bc(2).coefficient(1,1) = coefDrive_Y/Drive_Y.current;
 
-Drive_Y.rhoReference = 1;
+Drive_Y.rhoReference = rhoReference;
 
 %% Drive Z
 disp('Define the Drive Z')
@@ -77,7 +77,7 @@ Drive_Z.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_Z.current = 23.30;
 Drive_Z.bc(3).coefficient(1,1) = coefDrive_Z/Drive_Z.current;
 
-Drive_Z.rhoReference = 1;
+Drive_Z.rhoReference = rhoReference;
 
 clear('maxOrder','maxDegree','rhoReference',...
     'amplitude_zero','gradientInMainDirection','drivePeakAmplitude',...
