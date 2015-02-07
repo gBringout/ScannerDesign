@@ -5,7 +5,7 @@ clear all
 
 maxOrder = 2; % maximal order for the spherical harmonics serie
 maxDegree = 2; % maximal order for the spherical harmonics serie
-rhoReference = 0.5;% [m] Fields are described inside a sphere of 1 meter of diameter
+rhoReference = 0.09;% [m] Fields are described inside a sphere of 1 meter of diameter
 
 %sometime, we cannot use zero, for examples when we want to display in a
 %log scale
@@ -47,7 +47,7 @@ Quadru_45.bc(2).coefficient(2,2) = coefGradient;
 
 Quadru_45.current = 1;
 Quadru_45.rhoReference = rhoReference;
-%% Delection
+%% Selection
 disp('Define the Selection coil')
 Selection_Z.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Selection_Z.bc(2).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -56,9 +56,9 @@ Selection_Z.bs(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Selection_Z.bs(2).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Selection_Z.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 
-Selection_Z.bc(1).coefficient(2,2) = coefGradient;
-Selection_Z.bs(2).coefficient(2,2) = coefGradient;
-Selection_Z.bc(3).coefficient(2,1) = 2*coefGradient;
+Selection_Z.bc(1).coefficient(2,2) = -coefGradient;
+Selection_Z.bs(2).coefficient(2,2) = -coefGradient;
+Selection_Z.bc(3).coefficient(2,1) = -2*coefGradient;
 
 Selection_Z.current = 1;
 Selection_Z.rhoReference = rhoReference;
@@ -75,7 +75,7 @@ Drive_X.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_X.current = 100;
 Drive_X.bc(1).coefficient(1,1) = coefDrive_X/Drive_X.current;
 
-Drive_X.rhoReference = 1;
+Drive_X.rhoReference = rhoReference;
 %% Drive Y
 disp('Define the Drive Y')
 Drive_Y.bc(1).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
@@ -95,4 +95,4 @@ clear('maxOrder','maxDegree','rhoReference',...
     'amplitude_zero','gradientOnTheLine','drivePeakAmplitude',...
     'coefGradient','coefDrive_X','coefDrive_Y')
 
-save('examples\IdealFFL.mat')
+save(fullfile('examples','IdealFFL.mat'))

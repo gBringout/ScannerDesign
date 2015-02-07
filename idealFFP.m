@@ -12,11 +12,11 @@ rhoReference = 0.5;% [m] Fields are described inside a sphere of 1 meter of diam
 amplitude_zero = 10^-18;
 
 gradientInMainDirection = 5;
-drivePeakAmplitude = 0.05;
+drivePeakAmplitude = 0.050;
 
 coefGradient = (gradientInMainDirection)*rhoReference;
 coefDrive_X = drivePeakAmplitude;
-coefDrive_Y = drivePeakAmplitude*2;
+coefDrive_Y = 2*drivePeakAmplitude;
 coefDrive_Z = drivePeakAmplitude;
 
 %% Delection
@@ -29,7 +29,7 @@ Selection_Z.bs(2).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Selection_Z.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 
 Selection_Z.bc(1).coefficient(2,2) = coefGradient;
-Selection_Z.bs(2).coefficient(2,2) = 2*coefGradient;
+Selection_Z.bs(2).coefficient(2,2) = coefGradient*2;
 Selection_Z.bc(3).coefficient(2,1) = coefGradient;
 
 Selection_Z.current = 1;
@@ -82,4 +82,4 @@ clear('maxOrder','maxDegree','rhoReference',...
     'amplitude_zero','gradientInMainDirection','drivePeakAmplitude',...
     'coefGradient','coefDrive_X','coefDrive_Y','coefDrive_Z')
 
-save('examples\IdealFFP.mat')
+save(fullfile('examples','IdealFFP.mat'))
