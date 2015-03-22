@@ -5,11 +5,11 @@ clear all
 
 maxOrder = 2; % maximal order for the spherical harmonics serie
 maxDegree = 2; % maximal order for the spherical harmonics serie
-rhoReference = 0.09;% [m] Fields are described inside a sphere of 1 meter of diameter
+rhoReference = 0.10;% [m] Fields are described inside a sphere of 1 meter of diameter
 
 %sometime, we cannot use zero, for examples when we want to display in a
 %log scale
-amplitude_zero = 10^-18;
+amplitude_zero = 0;
 
 gradientOnTheLine = 4;
 drivePeakAmplitude = 0.015;
@@ -72,7 +72,7 @@ Drive_X.bs(2).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_X.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 
 %we set the current higher, in order to get a relatively small sensitivity
-Drive_X.current = 100;
+Drive_X.current = 293.29;
 Drive_X.bc(1).coefficient(1,1) = coefDrive_X/Drive_X.current;
 
 Drive_X.rhoReference = rhoReference;
@@ -86,11 +86,12 @@ Drive_Y.bs(2).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 Drive_Y.bs(3).coefficient = ones(maxOrder,maxDegree)*amplitude_zero;
 
 %we set the current higher, in order to get a relatively small sensitivity
-Drive_Y.current = 100;
+Drive_Y.current = 379.71;
 Drive_Y.bc(2).coefficient(1,1) = coefDrive_Y/Drive_Y.current;
 
 Drive_Y.rhoReference = rhoReference;
 
+%%
 clear('maxOrder','maxDegree','rhoReference',...
     'amplitude_zero','gradientOnTheLine','drivePeakAmplitude',...
     'coefGradient','coefDrive_X','coefDrive_Y')
